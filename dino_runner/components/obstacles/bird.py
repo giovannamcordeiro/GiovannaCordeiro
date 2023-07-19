@@ -13,5 +13,6 @@ class Bird(Obstacle):
     def draw(self, screen):
         if self.index >= 9:
             self.index = 0
-        screen.blit(self.image[self.index//5], self.rect)  
+        screen.blit(self.image[self.index//5], self.rect) 
+        #  // = ignora a virgula e os numeros decimais 
         self.index += 1 
