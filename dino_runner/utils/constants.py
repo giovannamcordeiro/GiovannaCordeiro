@@ -1,5 +1,6 @@
 import pygame
 import os
+pygame.mixer.init()
 
 # Global Constants
 TITLE = "Chrome Dino Runner"
@@ -64,12 +65,21 @@ BIRD = [
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
+MUSHROOM = pygame.image.load(os.path.join(IMG_DIR, 'MarioWorld/cogumelo.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
-
-
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
+HAMMER_TYPE = "hammer"
+MUSHROOM_TYPE = 'mushroon'
+
+SOUND = pygame.mixer.music.load("dino_runner/assets/Sound/Theme Song.mp3")
+
+SMALL_PIPE = pygame.image.load(os.path.join(IMG_DIR, 'MarioWorld/SmallPipe.png'))
+LARGE_PIPE =  pygame.image.load(os.path.join(IMG_DIR, 'MarioWorld/LargePipe.png'))
+
+
+BG_NEW = pygame.image.load(os.path.join(IMG_DIR, 'MarioWorld/BG_NEW.png'))

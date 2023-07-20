@@ -1,6 +1,6 @@
 import pygame
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE, BG_NEW
 from dino_runner.utils.text import draw_message
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
@@ -20,10 +20,11 @@ class Game:
         self.running = False
         self.game_speed = 20
         self.x_pos_bg = 0
-        self.y_pos_bg = 380
+        self.y_pos_bg = 435
         self.score = 0 
         self.game_speed = 20
         self.death_count = 0
+
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.power_up_manager = PowerUpManager()
@@ -39,6 +40,7 @@ class Game:
     
     def run(self):
         # Game loop: events - update - draw
+        pygame.mixer.music.play(-1)
         self.playing = True
         self.obstacle_manager.reset_obstacles()
         self.power_up_manager.reset_power_ups()
@@ -65,11 +67,11 @@ class Game:
     def update_score(self):
         self.score += 1
         if self.score % 100 == 0:
-            self.game_speed += 3 
+            self.game_speed += 2
 
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.fill((255, 255, 255)) #143, 209, 253
+        self.screen.blit(BG_NEW, (0, -100))  
         self.draw_background()
         self.draw_score()
         self.player.draw(self.screen)
@@ -87,7 +89,7 @@ class Game:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
-    
+      
     def draw_score(self):
         draw_message(
             f"Score: {self.score}",
@@ -121,12 +123,13 @@ class Game:
                 #KEYDOWN = qualquer tecla pressionada
 
     def show_menu(self):
-        self.screen.fill((255, 255, 255)) 
+        self.screen.fill((106, 170, 193)) 
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
 
         if self.death_count == 0:
-          draw_message("PRESS ANY KEY TO START", self.screen)
+          draw_message ("DINO IN MARIO WORLD", self.screen, (247, 14, 14), 50)
+          draw_message("PRESS ANY KEY TO START", self.screen, pos_y_center=half_screen_height + 100)
         else:
             draw_message("PRESS ANY KEY TO RESTART", self.screen, pos_y_center=half_screen_height + 140)
             draw_message(
