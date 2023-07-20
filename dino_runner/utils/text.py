@@ -6,7 +6,7 @@ FONT_COLOR = (0, 0, 0)
 FONT_SIZE = 22
 FONT_STYLE = "freesansbold.ttf"
 
-def draw_message_components(
+def draw_message(
         message,
         screen,
         font_color = FONT_COLOR,
